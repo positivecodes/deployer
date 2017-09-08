@@ -802,15 +802,15 @@ CHECKPERM() {
 UPDATE() {
     RUN_EVENT "BEFORE_UPDATE"
     echo " > updating deployer in global mode:"
-    composer global update humandevice/deployer
+    composer global update positivecodes/deployer
     local VENDOR=$(composer global config vendor-dir --absolute)
     local PERM=""
-    CHECKPERM "$VENDOR/humandevice/deployer"
+    CHECKPERM "$VENDOR/positivecodes/deployer"
     if [[ $? -eq 0 ]]; then
         PERM="sudo"
     fi
     echo " > copying deployer file to /usr/local/bin/"
-    ${PERM} cp -u ${VENDOR}/humandevice/deployer/deployer /usr/local/bin/
+    ${PERM} cp -u ${VENDOR}/positivecodes/deployer/deployer /usr/local/bin/
     echo " > setting deployer file executable"
     ${PERM} chmod +x /usr/local/bin/deployer
     echo " > deployer updated"

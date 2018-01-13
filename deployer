@@ -1,5 +1,5 @@
 #!/bin/bash
-# Human Device Yii 2 deployer v3.4.1
+# positive.codes Yii 2 deployer v3.4.2
 # ========================================================
 # -h, --help for help
 
@@ -109,7 +109,6 @@ END_MARKER() {
     RUN_EVENT "AFTER_END"
 }
 
-# creates folder
 CREATE_FOLDER() {
     LINE "$1"
     if mkdir "$2"
@@ -141,7 +140,6 @@ RUN_EVENT() {
     fi
 }
 
-# initialises release folder
 INIT_RELEASE_FOLDER() {
     if [[ ! -d "./${R_FOLDER}"  ]]; then
         CREATE_FOLDER " > initialing releases folder" "./${R_FOLDER}"
@@ -159,7 +157,6 @@ INIT_RELEASE_FOLDER() {
     return 0
 }
 
-# initialises development folder
 INIT_DEVELOPMENT_FOLDER() {
     if [[ ! -d "./${R_FOLDER}"  ]]; then
         CREATE_FOLDER " > initialing releases folder" "./${R_FOLDER}"
@@ -179,7 +176,6 @@ INIT_DEVELOPMENT_FOLDER() {
     return 1
 }
 
-# checks release folder
 CHECK_RELEASE_FOLDER() {
     LINE " > checking release ${1} folder"
     if [[ ! -d "./${R_FOLDER}/$1" ]]; then
@@ -214,7 +210,6 @@ DOWNLOAD_PROD_RELEASE_GIT() {
     fi
     if eval "${CMD}"
     then
-
         return 1
     fi
     return 0
@@ -321,7 +316,7 @@ COMPOSER_INSTALL() {
     fi
     local NODEV=""
     if [[ "$ENV" = "Production" ]]; then
-        NODEV="--no-dev --optimize-autoloader"
+        NODEV="--no-dev --classmap-authoritative"
     fi
     if eval "${CMD} ${NODEV}"
     then
@@ -826,7 +821,7 @@ START() {
     elif [[ ${MODE} -eq 1 ]]; then
         echo "NAME"
         echo ""
-        echo "    deployer v3.4.1 - deploy SVN/GIT version of Yii 2 project"
+        echo "    deployer v3.4.2 - deploy SVN/GIT version of Yii 2 project"
         echo ""
         echo "SYNOPSIS"
         echo ""
@@ -882,7 +877,7 @@ START() {
         echo ""
         echo "COPYRIGHT"
         echo ""
-        echo "    Copyright (c) 2016-2017 Human Device Sp. z o.o."
+        echo "    Copyright (c) 2016-2017 Human Device Sp. z o.o., 2018 positive.codes"
         echo ""
     elif [[ ${MODE} -eq 2 ]]; then
         if [[ "$VERSION" = "" ]]; then

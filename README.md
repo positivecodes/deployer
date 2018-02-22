@@ -20,11 +20,11 @@ Copy `deployer` to the project folder.
 
 Run
 
-    composer global require humandevice/deployer
+    composer global require positivecodes/deployer
 
 and then
 
-    composer run-script post-update-cmd -d COMPOSER_VENDOR/humandevice/deployer
+    composer run-script post-update-cmd -d COMPOSER_VENDOR/positivecodes/deployer
 
 where `COMPOSER_VENDOR` is the vendor composer folder. You can find it by running `composer global config vendor-dir --absolute`.
 
